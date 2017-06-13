@@ -1,18 +1,17 @@
 package com.payroll.controller;
 
-import com.payroll.com.payroll.utils.FileProcess;
-import com.payroll.model.PayrollFileModel;
+import com.payroll.utils.FileProcess;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class BaseController {
 
     private static final String VIEW_INDEX = "index";
+    private static final String VIEW_REPORT = "report";
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String welcome(ModelMap model) {
 
@@ -25,7 +24,7 @@ public class BaseController {
 
         if (file.isEmpty()) {
             model.put("msg", "failed to upload file because its empty");
-            return "index";
+            return VIEW_INDEX;
         }
 
         FileProcess processingInstance = new FileProcess();
@@ -36,15 +35,15 @@ public class BaseController {
             }
             else{
                 model.put("msg","the file exists!");
-                return "index";
+                return VIEW_INDEX;
             }
         }
         catch(Exception ex){
             model.put("msg","failed to process file");
-            return "/index";
+            return VIEW_INDEX;
         }
 
-        return "report";
+        return VIEW_REPORT;
     }
 
     @RequestMapping(value = "/report",method = RequestMethod.GET)
@@ -54,9 +53,9 @@ public class BaseController {
         model.addAttribute("report",processingInstance.retrieveReport());
         }catch(Exception ex){
             model.put("msg", "failed to retrieve report");
-            return "index";
+            return VIEW_INDEX;
         }
-        return "report";
+        return VIEW_REPORT;
     }
 
 }

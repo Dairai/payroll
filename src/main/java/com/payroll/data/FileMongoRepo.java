@@ -6,6 +6,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.payroll.model.PayrollFileModel;
+import com.payroll.utils.ConfigManager;
 import org.bson.*;
 
 /**
@@ -13,16 +14,25 @@ import org.bson.*;
  */
 public class FileMongoRepo {
 
-    private String mongoServerName = "Gina";
-    private String mongoDbName = "waveapps";
-    private int mongoDbPort = 27017;
+    private String mongoServerName = "";
+    private String mongoDbName = "";
+    private int mongoDbPort;
     private String mongoDbUser = "";
-    private String mongoDbPassword = "password";
+    private String mongoDbPassword = "";
 
-    public FileMongoRepo(){};
+    public FileMongoRepo(){setDBParams();}
+
+    private void setDBParams()
+    {
+        mongoServerName = ConfigManager.getInstance().getSetting(ConfigManager.MONGO_SERVER_KEY);
+        mongoDbUser = ConfigManager.getInstance().getSetting(ConfigManager.MONGO_DB_USER);
+        mongoDbPassword = ConfigManager.getInstance().getSetting(ConfigManager.MONGO_DB_PASSWORD);
+        mongoDbPort = ConfigManager.getInstance().getSettingAsInt(ConfigManager.MONGO_DB_PORT_KEY);
+        mongoDbName = ConfigManager.getInstance().getSetting(ConfigManager.MONGO_DB_NAME_KEY);
+    }
 
     private MongoDatabase getMongoDatabase() {
-        MongoClient mongo = null;
+        MongoClient mongo;
         if (mongoDbUser.trim().equals("")) {
             mongo = new MongoClient(mongoServerName, mongoDbPort);
         } else {
@@ -37,14 +47,12 @@ public class FileMongoRepo {
             mongo = new MongoClient(uri);
         }
 
-        MongoDatabase db =  mongo.getDatabase(mongoDbName);
-        return db;
+        return mongo.getDatabase(mongoDbName);
     }
 
     public void storeFile(PayrollFileModel file){
         MongoDatabase db = this.getMongoDatabase();
 
-        //Note: using BsonDocument given the nature of the contents.
         MongoCollection<BsonDocument> blogCollection = db.getCollection("reports", BsonDocument.class);
 
         BsonDocument bDoc = new BsonDocument();
@@ -62,9 +70,7 @@ public class FileMongoRepo {
         doc.put("name", new BsonString(fileName));
         FindIterable<BsonDocument> res = db.getCollection("reports",BsonDocument.class).find(doc);
 
-        if(res.first() == null)
-            return false;
+        return !(res.first() == null);
 
-        return true;
     }
 }

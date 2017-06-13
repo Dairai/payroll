@@ -1,6 +1,7 @@
 package com.payroll.model;
 
 /**
+ * Model for storing retrieved report records
  * Created by Dairai on 6/11/2017.
  */
 public class ReportRecordModel {

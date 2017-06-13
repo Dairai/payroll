@@ -1,9 +1,7 @@
 package com.payroll.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
+ * Model used to store individual records from the input file
  * Created by Dairai on 6/11/2017.
  */
 public class FileRecordModel {

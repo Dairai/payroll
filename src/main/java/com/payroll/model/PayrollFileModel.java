@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Random;
 
 /**
+ * Model used to store attributes about and data in the file for future retrieval
  * Created by Dairai on 6/11/2017.
  */
 public class PayrollFileModel {

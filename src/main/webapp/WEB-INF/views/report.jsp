@@ -13,23 +13,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Employee ID</th>
-                <th>Hours worked</th>
-                <th>Employee id</th>
-            </tr>
-        </thead>
-        <tbody>
-            <c:forEach var="employee" items="${report}">
+    <div class="container">
+        <p>
+            <a class="btn btn-info" href="${pageContext.request.contextPath}/">Load New Report</a>
+        </p>
+    </div>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>${employee.employeeId}</td>
-                    <td>${employee.payPeriod}</td>
-                    <td>$${employee.amtPaid}</td>
+                    <th>Employee ID</th>
+                    <th>Hours worked</th>
+                    <th>Amount Paid</th>
                 </tr>
-            </c:forEach>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <c:forEach var="employee" items="${report}">
+                    <tr>
+                        <td>${employee.employeeId}</td>
+                        <td>${employee.payPeriod}</td>
+                        <td>$${String.format("%.2f", employee.amtPaid)}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
