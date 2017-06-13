@@ -8,12 +8,13 @@ Mongo db to store the file as a document and an SQL database to store the record
 3. Update the Config.properties file with the database parameters 
 3. Install Maven and Tomcat 9 on local machine
 4. Create a Tomcat build configuration
-5. Populate the pay_period table in the SQL database example row as below
- -----------------------------------------------------
+5. Populate the pay_period table in the SQL database example row as below:
+
+ =====================================================
  | 2014-01-01 | 2014-01-15 | 01/01/2014 - 15/01/2015 |
- -----------------------------------------------------
+ =====================================================
  | 2014-01-16 | 2014-02-31 | 16/01/2014 - 31/01/2014 |
- -----------------------------------------------------
+ =====================================================
 
 **Running the application**
 
