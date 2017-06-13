@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="waveapps:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="waveapps.war">
+      <element id="artifact" artifact-name="waveapps:war exploded" />
+    </root>
+  </artifact>
+</component>
