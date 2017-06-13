@@ -15,4 +15,4 @@ Running the application
 
 Achievements
 
-I have limited experience with MVC frameworks, especially non-ASP.NET ones. I am proud that I was able to learn about and build a web application using Spring MVC in a short amount of time. This is also useful as I am exploring Javascript front end frameworks and creating more and more web applications. 
+I have limited experience with MVC frameworks, especially non-ASP.NET ones. I did not want to have to figure out how to port it over to MacOS/Linux so I opted to go with a platform that would work better on either of those operating systems. I am proud that I was able to learn about and build a web application using Spring MVC in a short amount of time. This is also useful as I am exploring Javascript front end frameworks and creating more and more web applications. 
