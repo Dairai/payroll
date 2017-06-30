@@ -25,6 +25,7 @@
                     <th>Employee ID</th>
                     <th>Hours worked</th>
                     <th>Amount Paid</th>
+                    <th>Amount Paid (Overtime)</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +33,8 @@
                     <tr>
                         <td>${employee.employeeId}</td>
                         <td>${employee.payPeriod}</td>
+                        <td>$${String.format("%.2f", employee.amtPaid)}</td>
+
                         <td>$${String.format("%.2f", employee.amtPaid)}</td>
                     </tr>
                 </c:forEach>

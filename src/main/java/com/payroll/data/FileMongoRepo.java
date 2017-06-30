@@ -70,7 +70,7 @@ public class FileMongoRepo {
         doc.put("name", new BsonString(fileName));
         FindIterable<BsonDocument> res = db.getCollection("reports",BsonDocument.class).find(doc);
 
-        return !(res.first() == null);
+        return !(res.first()==null);
 
     }
 }

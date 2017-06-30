@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:http="http://www.springframework.org/schema/security"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -8,7 +9,9 @@
   http://www.springframework.org/schema/aop
   http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
   http://www.springframework.org/schema/context
-  http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+  http://www.springframework.org/schema/context/spring-context-2.5.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security.xsd">
 
     <!--<mvc:resources mapping="/resources/**" location="/resources/" />-->
     <context:component-scan base-package="com.payroll"/>
@@ -26,4 +29,6 @@
             <value>.jsp</value>
         </property>
     </bean>
+
+
 </beans>

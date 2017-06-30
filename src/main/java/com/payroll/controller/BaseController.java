@@ -2,6 +2,9 @@ package com.payroll.controller;
 
 import com.payroll.utils.FileProcess;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -10,8 +13,33 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class BaseController {
 
-    private static final String VIEW_INDEX = "index";
+    private static final String VIEW_INDEX = "upload";
     private static final String VIEW_REPORT = "report";
+    private static final String VIEW_LOGIN = "login";
+
+    @Autowired
+    UserDetailsService userDetailsService;
+
+/*    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(ModelMap model) {
+        //model.addAttribute("login", new Login());
+        return VIEW_LOGIN;
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String validateLogin(ModelMap model, @RequestParam("username") String username,
+                                @RequestParam("password") String password) {
+
+        UserDetails user = userDetailsService.loadUserByUsername(username);
+
+        if(user != null && user.isEnabled())
+        {
+            return VIEW_INDEX;
+        }
+
+        return VIEW_LOGIN;
+    }*/
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String welcome(ModelMap model) {
 

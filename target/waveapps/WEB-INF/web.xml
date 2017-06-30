@@ -11,13 +11,30 @@
 
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value></param-value>
+    <param-value>
+      /WEB-INF/springmvc-servlet.xml
+      /WEB-INF/springmvc-security.xml
+    </param-value>
   </context-param>
 
   <!-- Creates the Spring Container shared by all Servlets and Filters -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+
+  <filter>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/springmvc-security.xml</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
 
   <!-- Processes application requests -->
   <servlet>
